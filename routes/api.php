@@ -20,6 +20,12 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('v1/greeting', [MiniAppController::class, 'index']);
+Route::prefix('v1')->group(function () {
+    Route::get('greeting', [MiniAppController::class, 'index']);
 
-Route::post('v1/auth/token', [MiniAppController::class, 'authToken']);
+    Route::get('notify', [MiniAppController::class, 'notify']);
+
+    Route::post('auth/token', [MiniAppController::class, 'authToken']);
+
+    Route::post('create/order', [MiniAppController::class, 'createOrder']);
+});
