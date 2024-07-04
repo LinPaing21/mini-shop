@@ -70,14 +70,14 @@ class MiniAppController extends Controller
         }
     }
 
-    public function createOrder(Request $request)
+    public function createOrder($price)
     {
         $merchCode = config('miniapp.merchant_code');
         $appid = config('miniapp.merchant_app_id');
         $appkey = config('miniapp.merchant_app_key');
         $precreateUrl = 'http://api.kbzpay.com/payment/gateway/uat/precreate';
 
-        $amount = $request->amount;
+        $amount = $price;
 
         $data = array(
             'Request' => array(

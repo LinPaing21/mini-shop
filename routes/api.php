@@ -27,5 +27,5 @@ Route::prefix('v1')->group(function () {
 
     Route::post('auth/token', [MiniAppController::class, 'authToken']);
 
-    Route::post('create/order', [MiniAppController::class, 'createOrder']);
+    Route::get('create/order/{price}', [MiniAppController::class, 'createOrder']);
 });
